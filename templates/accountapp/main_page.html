@@ -6,5 +6,8 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Здесь будут счета</h1>
+    {% include 'accountapp/includes/account_menu.html' %}
+    {% block account_content %}
+        <h1>Здесь будут счета</h1>
+    {% endblock account_content %}
 {% endblock content %}
