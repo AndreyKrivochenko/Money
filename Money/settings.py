@@ -45,6 +45,9 @@ INSTALLED_APPS = [
 
     'mainapp',
     'accountapp',
+
+    'bootstrap_modal_forms',
+    'fontawesome_free',
 ]
 
 MIDDLEWARE = [

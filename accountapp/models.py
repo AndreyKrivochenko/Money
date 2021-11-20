@@ -10,6 +10,12 @@ class AccountType(models.Model):
             full_summ += int(akk.summ)
         return full_summ
 
+    def get_all_account(self):
+        return Account.objects.filter(account_type=self)
+
+    def __str__(self):
+        return self.title
+
 
 class Account(models.Model):
     account_type = models.ForeignKey(AccountType, on_delete=models.CASCADE, verbose_name='тип счёта')

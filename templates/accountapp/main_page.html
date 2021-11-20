@@ -6,8 +6,37 @@
 {% endblock title %}
 
 {% block content %}
-    {% include 'accountapp/includes/account_menu.html' %}
+    {% include 'accountapp/includes/inc_account_menu.html' %}
     {% block account_content %}
-        <h1>Здесь будут счета</h1>
+        <div class="row h-100">
+            <div class="col-2 border-end text-center">
+                <button id="createAccountModal" type="button" class="btn btn-outline-info btn-sm mt-5">Создать счёт
+                </button>
+            </div>
+            <div class="col-7 border-end">
+                {% include 'accountapp/includes/inc_accounts.html' %}
+            </div>
+            <div class="col-3"></div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
     {% endblock account_content %}
 {% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+    <script>
+        $(document).ready(function () {
+
+            $("#createAccountModal").modalForm({
+                formURL: "{% url 'accountapp:create_account' %}"
+            });
+        });
+    </script>
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock js %}

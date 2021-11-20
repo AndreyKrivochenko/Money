@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from accountapp.models import AccountType, Account
+
+admin.site.register(AccountType)
+admin.site.register(Account)
