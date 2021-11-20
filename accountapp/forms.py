@@ -4,18 +4,18 @@ from django import forms
 from accountapp.models import Account, AccountType
 
 
-class AccountCreateForm(BSModalModelForm):
+class AccountCreateForm(forms.ModelForm):
     account_type = forms.ModelChoiceField(
         label='Тип счёта',
         queryset=AccountType.objects.all(),
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': 'form-control mb-2'}),
         empty_label='Выберите тип счёта'
     )
 
     title = forms.CharField(
         label='Наименование',
         max_length=128,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'text', 'placeholder': 'Наименование'}),
+        widget=forms.TextInput(attrs={'class': 'form-control mb-2', 'type': 'text', 'placeholder': 'Наименование'}),
         required=False
     )
 

@@ -6,7 +6,9 @@
                 <span>{{ account.title }}</span>
                 <div>
                     <span>{{ account.summ }} руб.</span>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#accountDeleteModal" data-bs-href="{% url 'accountapp:delete_account' account.pk %}"><i class="fas fa-trash"></i></a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#accountDeleteModal"
+                       data-bs-title="{{ account.title }}"
+                       data-bs-href="{% url 'accountapp:delete_account' account.pk %}"><i class="fas fa-trash"></i></a>
                 </div>
             </div>
         {% endfor %}

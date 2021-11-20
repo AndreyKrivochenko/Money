@@ -9,4 +9,5 @@ urlpatterns = [
     path('property/', accountapp.AccountPropertyTemplateView.as_view(), name='property'),
     path('create/', accountapp.AccountCreateView.as_view(), name='create_account'),
     path('delete/<int:pk>/', accountapp.AccountDeleteView.as_view(), name='delete_account'),
+    # path('load_create_form/', accountapp.load_account_create_form, name='load_create_form'),
 ]

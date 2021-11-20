@@ -10,7 +10,7 @@
     {% block account_content %}
         <div class="row h-100">
             <div class="col-2 border-end text-center">
-                <button id="createAccountModal" type="button" class="btn btn-outline-info btn-sm mt-5">Создать счёт
+                <button data-bs-toggle="modal" data-bs-target="#accountCreateModal" type="button" class="btn btn-outline-info btn-sm mt-5">Создать счёт
                 </button>
             </div>
             <div class="col-7 border-end">
@@ -26,17 +26,10 @@
             </div>
         </div>
     {% endblock account_content %}
+    {% include 'accountapp/create_account_modal.html' %}
 {% endblock content %}
 
 {% block js %}
     {{ block.super }}
-    <script>
-        $(document).ready(function () {
-
-            $("#createAccountModal").modalForm({
-                formURL: "{% url 'accountapp:create_account' %}"
-            });
-        });
-    </script>
     <script src="{% static 'js/script.js' %}"></script>
 {% endblock js %}

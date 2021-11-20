@@ -1,23 +1,6 @@
-<form method="post" action="">
-    {% csrf_token %}
-    <div class="modal-header">
-        <h5 class="modal-title">Создать счёт</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="accountCreateModal" tabindex="-1" aria-labelledby="accountCreateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
     </div>
-    <div class="modal-body">
-        {% for field in form %}
-            <div class="form-group{% if field.errors %} invalid{% endif %}">
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
-                {% for error in field.errors %}
-                    <p class="help-block">{{ error }}</p>
-                {% endfor %}
-            </div>
-        {% endfor %}
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-        <button type="submit" class="btn btn-primary">Создать</button>
-    </div>
-</form>
+</div>

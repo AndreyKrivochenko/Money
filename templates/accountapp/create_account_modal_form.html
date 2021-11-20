@@ -1,0 +1,24 @@
+{% load static %}
+<form action="{% url 'accountapp:create_account' %}" method="post">
+    <div class="modal-header">
+        <h5 class="modal-title" id="accountCreateLabel">Создать новый счёт</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {{ form.account_type.errors }}
+        {{ form.account_type.label }}
+        {{ form.account_type }}
+        {{ form.title.errors }}
+        {{ form.title.label }}
+        {{ form.title }}
+        {{ form.summ.errors }}
+        {{ form.summ.label }}
+        {{ form.summ }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="submit" class="btn btn-primary">Создать</button>
+    </div>
+</form>
