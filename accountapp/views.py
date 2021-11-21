@@ -1,6 +1,5 @@
-from bootstrap_modal_forms.generic import BSModalCreateView
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, DeleteView
+from django.views.generic import TemplateView, DeleteView, CreateView
 
 from accountapp.forms import AccountCreateForm
 from accountapp.models import AccountType, Account
@@ -18,8 +17,9 @@ class AccountMainTemplateView(TemplateView):
         return context
 
 
-class AccountCreateView(BSModalCreateView):
-    template_name = 'accountapp/create_account_modal.html'
+class AccountCreateView(CreateView):
+    template_name = 'accountapp/create_account_modal_form.html'
+    model = Account
     form_class = AccountCreateForm
     success_url = reverse_lazy('accountapp:main_page')
 
@@ -27,6 +27,7 @@ class AccountCreateView(BSModalCreateView):
 class AccountDeleteView(DeleteView):
     model = Account
     success_url = reverse_lazy('accountapp:main_page')
+
 
 class AccountServicesTemplateView(TemplateView):
     template_name = 'accountapp/account_services.html'

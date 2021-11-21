@@ -45,8 +45,8 @@ INSTALLED_APPS = [
 
     'mainapp',
     'accountapp',
+    'catalogapp',
 
-    'bootstrap_modal_forms',
     'fontawesome_free',
 ]
 
