@@ -7,15 +7,21 @@
     <div class="modal-body">
         {% csrf_token %}
         {{ form.non_field_errors }}
-        {{ form.account_type.errors }}
-        {{ form.account_type.label }}
-        {{ form.account_type }}
-        {{ form.title.errors }}
-        {{ form.title.label }}
-        {{ form.title }}
-        {{ form.summ.errors }}
-        {{ form.summ.label }}
-        {{ form.summ }}
+        {% for field in form %}
+            {{ field.errors }}
+            {{ field.label }}
+            {{ field }}
+        {% endfor %}
+
+        {#        {{ form.account_type.errors }}#}
+        {#        {{ form.account_type.label }}#}
+        {#        {{ form.account_type }}#}
+        {#        {{ form.title.errors }}#}
+        {#        {{ form.title.label }}#}
+        {#        {{ form.title }}#}
+        {#        {{ form.summ.errors }}#}
+        {#        {{ form.summ.label }}#}
+        {#        {{ form.summ }}#}
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>

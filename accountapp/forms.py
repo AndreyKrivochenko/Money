@@ -1,4 +1,3 @@
-from bootstrap_modal_forms.forms import BSModalModelForm
 from django import forms
 
 from accountapp.models import Account, AccountType
