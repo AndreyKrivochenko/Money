@@ -1,0 +1,26 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    Money - {{ title }}
+{% endblock title %}
+
+{% block content %}
+    {% include 'catalogapp/includes/inc_catalog_menu.html' %}
+    {% block catalog_content %}
+        <div class="row">
+            <div class="col-2 border-end text-center">
+                <button data-bs-toggle="modal" data-bs-target="#catalogCreateModal" type="button"
+                        class="btn btn-outline-info btn-sm mt-5">Новая категория
+                </button>
+            </div>
+            <div class="col-10 border-end">
+            </div>
+        </div>
+    {% endblock catalog_content %}
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+    {#    <script src="{% static 'js/script.js' %}"></script>#}
+{% endblock js %}

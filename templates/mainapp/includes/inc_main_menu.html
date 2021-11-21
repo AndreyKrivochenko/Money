@@ -7,12 +7,10 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav container-fluid justify-content-center">
-                <a class="nav-link active" aria-current="page" href="{% url 'accountapp:main_page' %}">Учёт</a>
-                <a class="nav-link disabled" href="#">Бюджет</a>
-                <a class="nav-link disabled" href="#">Календарь</a>
-                <a class="nav-link disabled" href="#">Цели</a>
-                <a class="nav-link disabled" href="#">Отчёты</a>
-                <a class="nav-link disabled" href="#">Справочники</a>
+                {% for key, value in main_menu.items %}
+                    <a class="{{ value.class }} {% if request.resolver_match.app_name == value.app %}active" aria-current="page{% endif %}"
+                       href="{{ value.href }}">{{ key }}</a>
+                {% endfor %}
             </div>
         </div>
     </div>
