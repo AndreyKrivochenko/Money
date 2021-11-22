@@ -9,12 +9,27 @@
     {% include 'catalogapp/includes/inc_catalog_menu.html' %}
     {% block catalog_content %}
         <div class="row">
-            <div class="col-2 border-end text-center">
+            <div class="col-2 border-end border-bottom text-center pb-5">
                 <button data-bs-toggle="modal" data-bs-target="#catalogCreateModal" type="button"
                         class="btn btn-outline-info btn-sm mt-5">Новая категория
                 </button>
             </div>
-            <div class="col-10 border-end">
+            <div class="col-10 border-bottom">
+                {% include 'catalogapp/includes/inc_catalog.html' %}
+            </div>
+        </div>
+        <div class="modal fade" id="catalogCreateModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    {#                    Здесь JS вставляет форму загруженную с "/catalog/create/"#}
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="catalogUnitCreateModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    {#                    Здесь JS вставляет форму загруженную с "/catalog/create/unit/<int:pk>/"#}
+                </div>
             </div>
         </div>
     {% endblock catalog_content %}
@@ -22,5 +37,5 @@
 
 {% block js %}
     {{ block.super }}
-    {#    <script src="{% static 'js/script.js' %}"></script>#}
+    <script src="{% static 'js/catalog_modal.js' %}"></script>
 {% endblock js %}

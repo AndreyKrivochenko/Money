@@ -5,6 +5,9 @@ from django.db import models
 class CategoryType(models.Model):
     name = models.CharField(max_length=32, verbose_name='Тип категории')
 
+    def get_all_category(self):
+        return Category.objects.filter(category_type=self)
+
     def __str__(self):
         return self.name
 
@@ -13,6 +16,9 @@ class CategoryType(models.Model):
 class Category(models.Model):
     category_type = models.ForeignKey(CategoryType, on_delete=models.CASCADE, verbose_name='Тип категории')
     name = models.CharField(max_length=64, verbose_name='Название категории')
+
+    def get_all_unit_category(self):
+        return CategoryUnit.objects.filter(category=self)
 
     def __str__(self):
         return self.name
