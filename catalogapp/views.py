@@ -1,4 +1,3 @@
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
@@ -43,7 +42,8 @@ class CatalogCreateUnitCategoryView(CreateView):
     template_name = 'catalogapp/create_unit_category_modal_form.html'
     success_url = reverse_lazy('catalogapp:main_page')
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(CatalogCreateUnitCategoryView, self).get_context_data(**kwargs)
-    #     context['initial_category'] = Category.objects.get(pk=self.kwargs['pk'])
-    #     return context
+    def get_initial(self):
+        initial = {
+            'category': Category.objects.get(pk=self.kwargs['pk'])
+        }
+        return initial

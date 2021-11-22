@@ -24,9 +24,9 @@ class CatalogCategoryCreateForm(forms.ModelForm):
 
 class CatalogUnitCategoryCreateForm(forms.ModelForm):
     category = forms.ModelChoiceField(
-        label='Категория',
+        label='',
         queryset=Category.objects.all(),
-        widget=forms.Select(attrs={'class': 'form-control mb-2'}),
+        widget=forms.HiddenInput(attrs={'class': 'form-control mb-2'}),
         empty_label='Выберите категорию'
     )
 

@@ -4,16 +4,18 @@
     {% for category_type in category_type_list %}
         <div class="col-6 border-end">
             <h3 class="text-center">{{ category_type.name }}</h3>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex flex-wrap justify-content-between">
                 {% for category in category_type.get_all_category %}
-                    <div class="card" style="width: 16rem;">
+                    <div class="card mb-3" style="width: 13rem;">
                         <div class="card-header d-flex justify-content-between">
-                            <div>{{ category.name }}</div>
-                            <a data-bs-toggle="modal" data-bs-target="#catalogUnitCreateModal" href="{% url 'catalogapp:create_unit_category' category.pk %}"><i class="fas fa-plus"></i></a>
+                            <div class="small fw-bolder"><span><a href="#"><i class="far fa-minus-square"></i></a> </span>{{ category.name }}</div>
+                            <a data-bs-toggle="modal" data-bs-target="#catalogUnitCreateModal"
+                               href="{% url 'catalogapp:create_unit_category' category.pk %}"><i
+                                    class="fas fa-plus"></i></a>
                         </div>
                         <ul class="list-group list-group-flush">
                             {% for category_unit in category.get_all_unit_category %}
-                                <li class="list-group-item">{{ category_unit.name }}</li>
+                                <li class="list-group-item small">{{ category_unit.name }}</li>
                             {% endfor %}
                         </ul>
                     </div>
