@@ -1,0 +1,20 @@
+<div class="modal fade" id="categoryDeleteModal" tabindex="-1" aria-labelledby="categoryDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="categoryDeleteLabel">Подтвердите удаление</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены что хотите удалить категорию - <span id="category_name"></span>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <form method="post" action="#" class="btn-delete-category-ok">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Удалить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
