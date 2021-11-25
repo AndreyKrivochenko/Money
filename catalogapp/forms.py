@@ -1,6 +1,6 @@
 from django import forms
 
-from catalogapp.models import Category, CategoryType, CategoryUnit
+from catalogapp.models import Category, CategoryType, CategoryUnit, Counterparties
 
 
 class CatalogCategoryCreateForm(forms.ModelForm):
@@ -39,3 +39,14 @@ class CatalogUnitCategoryCreateForm(forms.ModelForm):
     class Meta:
         model = CategoryUnit
         fields = ['category', 'name']
+
+
+class CounterpartiesCreateForm(forms.ModelForm):
+    name = forms.CharField(label='Наименование', max_length=128, widget=forms.TextInput(
+        attrs={'class': 'form-control mb-2', 'type': 'text', 'placeholder': 'Наименование'}))
+    description = forms.CharField(label='Описание', max_length=128, widget=forms.TextInput(
+        attrs={'class': 'form-control mb-2', 'type': 'text', 'placeholder': 'Краткое описание'}))
+
+    class Meta:
+        model = Counterparties
+        fields = ['name', 'description']

@@ -1,9 +1,16 @@
+const counterpartiesCreateModal = document.getElementById('counterpartiesCreateModal');
+counterpartiesCreateModal.addEventListener('show.bs.modal', async function (){
+    const contentDiv = counterpartiesCreateModal.querySelector('.modal-content');
+    const response = await fetch('/catalog/create/counterparties/');
+    contentDiv.innerHTML = await response.text();
+});
+
 const catalogCreateModal = document.getElementById('catalogCreateModal');
 catalogCreateModal.addEventListener('show.bs.modal', async function (){
     const contentDiv = catalogCreateModal.querySelector('.modal-content');
     const response = await fetch('/catalog/create/');
     contentDiv.innerHTML = await response.text();
-})
+});
 
 const catalogUnitCreateModal = document.getElementById('catalogUnitCreateModal');
 catalogUnitCreateModal.addEventListener('show.bs.modal', async function (event){
@@ -14,7 +21,7 @@ catalogUnitCreateModal.addEventListener('show.bs.modal', async function (event){
     contentDiv.innerHTML = await response.text();
     const form = document.getElementById('createUnitCategoryModalForm');
     form.setAttribute('action', href)
-})
+});
 
 const categoryDeleteModal = document.getElementById('categoryDeleteModal')
 categoryDeleteModal.addEventListener('show.bs.modal', function (event){
@@ -25,7 +32,7 @@ categoryDeleteModal.addEventListener('show.bs.modal', function (event){
     let modalCategoryName = categoryDeleteModal.querySelector('#category_name')
     modalButton.setAttribute('action', toHref);
     modalCategoryName.textContent = categoryName;
-})
+});
 
 const categoryUnitDeleteModal = document.getElementById('categoryUnitDeleteModal')
 categoryUnitDeleteModal.addEventListener('show.bs.modal', function (event){
@@ -36,4 +43,4 @@ categoryUnitDeleteModal.addEventListener('show.bs.modal', function (event){
     let modalCategoryUnitName = categoryUnitDeleteModal.querySelector('#category_unit_name')
     modalButton.setAttribute('action', toHref);
     modalCategoryUnitName.textContent = categoryUnitName;
-})
+});
