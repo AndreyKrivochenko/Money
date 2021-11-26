@@ -1,6 +1,6 @@
 from django import forms
 
-from accountapp.models import Account, AccountType
+from accountapp.models import Account, AccountType, AccountOperation
 
 
 class AccountCreateForm(forms.ModelForm):
@@ -28,3 +28,10 @@ class AccountCreateForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ('account_type', 'title', 'summ')
+
+
+class AddOperationsForm(forms.ModelForm):
+
+    class Meta:
+        model = AccountOperation
+        fields = ['account', 'counterparty', 'category', 'category_unit', 'price', 'comment', 'data']
