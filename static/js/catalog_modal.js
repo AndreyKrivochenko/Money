@@ -44,3 +44,14 @@ categoryUnitDeleteModal.addEventListener('show.bs.modal', function (event){
     modalButton.setAttribute('action', toHref);
     modalCategoryUnitName.textContent = categoryUnitName;
 });
+
+const counterpartiesDeleteModal = document.getElementById('counterpartiesDeleteModal')
+counterpartiesDeleteModal.addEventListener('show.bs.modal', function (event){
+    let button = event.relatedTarget;
+    let toHref = button.getAttribute('data-bs-href');
+    let counterpartiesName = button.getAttribute('data-bs-title');
+    let modalButton = counterpartiesDeleteModal.querySelector('.btn-delete-counterparties-ok');
+    let modalCounterpartiesName = counterpartiesDeleteModal.querySelector('#counterparties_name')
+    modalButton.setAttribute('action', toHref);
+    modalCounterpartiesName.textContent = counterpartiesName;
+});

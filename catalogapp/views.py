@@ -65,3 +65,8 @@ class CounterpartiesCreateView(CreateView):
     model = Counterparties
     template_name = 'catalogapp/create_counterparties_modal_form.html'
     success_url = reverse_lazy('catalogapp:counterparties')
+
+
+class CounterpartiesDeleteView(DeleteView):
+    model = Counterparties
+    success_url = reverse_lazy('catalogapp:counterparties')

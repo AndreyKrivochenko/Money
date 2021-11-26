@@ -10,5 +10,6 @@ urlpatterns = [
     path('create/counterparties/', catalogapp.CounterpartiesCreateView.as_view(), name='create_counterparties'),
     path('delete/<int:pk>/', catalogapp.CatalogCategoryDeleteView.as_view(), name='delete_category'),
     path('delete/unit/<int:pk>/', catalogapp.CatalogUnitCategoryDeleteView.as_view(), name='delete_unit_category'),
+    path('delete/counterparties/<int:pk>/', catalogapp.CounterpartiesDeleteView.as_view(), name='delete_counterparties'),
     path('counterparties/', catalogapp.CatalogCounterpartiesTemplateView.as_view(), name='counterparties'),
 ]

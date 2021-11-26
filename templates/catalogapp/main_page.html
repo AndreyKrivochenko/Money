@@ -8,6 +8,7 @@
 {% block content %}
     {% include 'catalogapp/includes/inc_catalog_menu.html' %}
     {% block catalog_content %}
+
         <div class="row">
             <div class="col-2 border-end border-bottom text-center pb-5">
                 <button data-bs-toggle="modal" data-bs-target="#catalogCreateModal" type="button"
@@ -18,31 +19,32 @@
                 {% include 'catalogapp/includes/inc_catalog.html' %}
             </div>
         </div>
-        <div class="modal fade" id="catalogCreateModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    {#                    Здесь JS вставляет форму загруженную с "/catalog/create/"#}
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="catalogUnitCreateModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    {#                    Здесь JS вставляет форму загруженную с "/catalog/create/unit/<int:pk>/"#}
-                </div>
-            </div>
-        </div>
 
     {% endblock catalog_content %}
+    <div class="modal fade" id="catalogCreateModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {#                    Здесь JS вставляет форму загруженную с "/catalog/create/"#}
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="catalogUnitCreateModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {#                    Здесь JS вставляет форму загруженную с "/catalog/create/unit/<int:pk>/"#}
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="counterpartiesCreateModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-
+                {#                    Здесь JS вставляет форму загруженную с "/catalog/create/counterparties/"#}
             </div>
         </div>
     </div>
     {% include 'catalogapp/delete_category_modal.html' %}
     {% include 'catalogapp/delete_category_unit_modal.html' %}
+    {% include 'catalogapp/delete_counterparties_modal.html' %}
 {% endblock content %}
 
 {% block js %}
