@@ -12,6 +12,8 @@
             <div class="col-2 border-end text-center">
                 <button data-bs-toggle="modal" data-bs-target="#accountCreateModal" type="button" class="btn btn-outline-info btn-sm mt-5">Создать счёт
                 </button>
+                <button data-bs-toggle="modal" data-bs-target="#operationCreateModal" type="button" class="btn btn-outline-info btn-sm mt-3">Новый доход/расход
+                </button>
             </div>
             <div class="col-7 border-end">
                 {% include 'accountapp/includes/inc_accounts.html' %}
@@ -25,8 +27,9 @@
                 </div>
             </div>
         </div>
-    {% endblock account_content %}
     {% include 'accountapp/create_account_modal.html' %}
+    {% include 'accountapp/create_operation_modal.html' %}
+    {% endblock account_content %}
 {% endblock content %}
 
 {% block js %}

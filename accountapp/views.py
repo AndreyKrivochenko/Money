@@ -1,8 +1,9 @@
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, CreateView
 
-from accountapp.forms import AccountCreateForm
-from accountapp.models import AccountType, Account
+from accountapp.forms import AccountCreateForm, OperationCreateForm
+from accountapp.models import AccountType, Account, AccountOperation
+from catalogapp.models import Category
 from common.constants import TemplateViewWithMenu
 
 
@@ -26,6 +27,23 @@ class AccountCreateView(CreateView):
 class AccountDeleteView(DeleteView):
     model = Account
     success_url = reverse_lazy('accountapp:main_page')
+
+
+class OperationCreateView(CreateView):
+    template_name = 'accountapp/create_operation_modal_form.html'
+    form_class = OperationCreateForm
+    model = AccountOperation
+    success_url = reverse_lazy('accountapp:main_page')
+
+    def post(self, request, *args, **kwargs):
+        category = Category.objects.get(pk=request.POST['category'])
+        account = Account.objects.get(pk=request.POST['account'])
+        if category.category_type.name == 'Расход':
+            account.inc_operation(int(request.POST['price']))
+        else:
+            account.add_operation(int(request.POST['price']))
+        account.save()
+        return super(OperationCreateView, self).post(request, *args, **kwargs)
 
 
 class AccountServicesTemplateView(TemplateViewWithMenu):

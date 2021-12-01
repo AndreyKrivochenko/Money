@@ -1,0 +1,20 @@
+{% load static %}
+<form action="{% url 'accountapp:create_operation' %}" method="post">
+    <div class="modal-header">
+        <h5 class="modal-title" id="operationCreateLabel">Создать новый приход/расход</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            {{ field.errors }}
+            {{ field.label }}
+            {{ field }}
+        {% endfor %}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="submit" class="btn btn-primary">Создать</button>
+    </div>
+</form>

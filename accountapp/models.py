@@ -24,6 +24,15 @@ class Account(models.Model):
     title = models.CharField(max_length=128, verbose_name='название счёта')
     summ = models.DecimalField(verbose_name='сумма счёта', max_digits=8, decimal_places=2)
 
+    def add_operation(self, price):
+        self.summ += price
+
+    def inc_operation(self, price):
+        self.summ -= price
+
+    def __str__(self):
+        return self.title
+
 
 class AccountOperation(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='счёт')
@@ -35,3 +44,6 @@ class AccountOperation(models.Model):
     data = models.DateField(verbose_name='Дата операции')
     created_at = models.DateTimeField(verbose_name='Дата создания записи', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Дата обновления записи', auto_now=True)
+
+    def __str__(self):
+        return f'{self.category.category_type.name}: {self.category_unit} - {self.price} руб.'

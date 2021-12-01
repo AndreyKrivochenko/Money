@@ -15,3 +15,10 @@ accountCreateModal.addEventListener('show.bs.modal', async function (){
     const response = await fetch('/account/create/');
     contentDiv.innerHTML = await response.text();
 })
+
+const operationCreateModal = document.getElementById('operationCreateModal')
+operationCreateModal.addEventListener('show.bs.modal', async function (){
+    const contentDiv = operationCreateModal.querySelector('.modal-content');
+    const response = await fetch('/account/create/operation/');
+    contentDiv.innerHTML = await response.text();
+})
