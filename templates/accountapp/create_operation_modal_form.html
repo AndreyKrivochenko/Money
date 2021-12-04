@@ -1,7 +1,7 @@
 {% load static %}
-<form action="{% url 'accountapp:create_account' %}" method="post">
+<form action="{% url 'accountapp:create_operation' %}" method="post" id="operation-create-form">
     <div class="modal-header">
-        <h5 class="modal-title" id="accountCreateLabel">Создать новый счёт</h5>
+        <h5 class="modal-title" id="operationCreateLabel">Создать новый приход/расход</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">

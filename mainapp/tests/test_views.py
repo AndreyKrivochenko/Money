@@ -8,4 +8,4 @@ class MainAppMainTemplateTest(TestCase):
     def test_context(self):
         response = self.client.get('')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['title'], 'Main')
+        self.assertEqual(response.context['title'], 'Главная')

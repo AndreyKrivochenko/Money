@@ -1,0 +1,18 @@
+{% extends 'catalogapp/main_page.html' %}
+{% load static %}
+
+{% block catalog_content %}
+    <div class="row">
+        <div class="col-2 border-end border-bottom text-center pb-5">
+            <button data-bs-toggle="modal" data-bs-target="#counterpartiesCreateModal" type="button"
+                    class="btn btn-outline-info btn-sm mt-5">Новый контрагент
+            </button>
+        </div>
+        <div class="col-5 border-bottom border-end">
+            {% include 'catalogapp/includes/inc_counterparties.html' %}
+        </div>
+        <div class="col-5 border-bottom">
+            {#            Здесь будет еще что-то#}
+        </div>
+    </div>
+{% endblock catalog_content %}

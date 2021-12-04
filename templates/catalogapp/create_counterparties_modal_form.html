@@ -1,7 +1,9 @@
 {% load static %}
-<form action="{% url 'accountapp:create_account' %}" method="post">
+
+
+<form action="{% url 'catalogapp:create_counterparties' %}" method="post">
     <div class="modal-header">
-        <h5 class="modal-title" id="accountCreateLabel">Создать новый счёт</h5>
+        <h5 class="modal-title" id="counterpartiesCreateLabel">Создать нового контрагента</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
@@ -18,3 +20,4 @@
         <button type="submit" class="btn btn-primary">Создать</button>
     </div>
 </form>
+

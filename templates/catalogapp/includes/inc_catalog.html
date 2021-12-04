@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="row h-100">
+    {% for category_type in category_type_list %}
+        <div class="col-6 border-end">
+            <h3 class="text-center">{{ category_type.name }}</h3>
+            <div class="d-flex flex-wrap justify-content-around align-items-start">
+                {% for category in category_type.get_all_category %}
+                    <div class="card mb-3" style="width: 13rem;">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="small fw-bolder d-flex"><a href="#" data-bs-toggle="modal"
+                                                                   data-bs-target="#categoryDeleteModal"
+                                                                   data-bs-title="{{ category.name }}"
+                                                                   data-bs-href="{% url 'catalogapp:delete_category' category.pk %}"><i
+                                    class="fas fa-trash text-danger"></i></a>
+                                <div class="ms-2">{{ category.name }}</div>
+                            </div>
+                            <a data-bs-toggle="modal" data-bs-target="#catalogUnitCreateModal"
+                               href="{% url 'catalogapp:create_unit_category' category.pk %}"><i
+                                    class="fas fa-plus"></i></a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for category_unit in category.get_all_unit_category %}
+                                <li class="list-group-item small d-flex"><a href="#" data-bs-toggle="modal"
+                                                                            data-bs-target="#categoryUnitDeleteModal"
+                                                                            data-bs-title="{{ category_unit.name }}"
+                                                                            data-bs-href="{% url 'catalogapp:delete_unit_category' category_unit.pk %}"><i
+                                        class="fas fa-minus text-danger"></i></a>
+                                    <div class="ms-2">{{ category_unit.name }}</div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
