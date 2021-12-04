@@ -1,9 +1,12 @@
+import json
+
+from django.core import serializers
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, CreateView
 
 from accountapp.forms import AccountCreateForm, OperationCreateForm
 from accountapp.models import AccountType, Account, AccountOperation
-from catalogapp.models import Category
+from catalogapp.models import Category, CategoryUnit
 from common.constants import TemplateViewWithMenu
 
 
@@ -14,6 +17,7 @@ class AccountMainTemplateView(TemplateViewWithMenu):
         context = super(AccountMainTemplateView, self).get_context_data()
         context['title'] = 'Счета'
         context['account_type'] = AccountType.objects.all()
+        context['category_json'] = serializers.serialize('json', CategoryUnit.objects.all())
         return context
 
 
@@ -34,6 +38,17 @@ class OperationCreateView(CreateView):
     form_class = OperationCreateForm
     model = AccountOperation
     success_url = reverse_lazy('accountapp:main_page')
+
+    def get_form(self, form_class=None):
+        form = super(OperationCreateView, self).get_form()
+        if 'key' in self.request.GET:
+            if int(self.request.GET['key']) == 1:
+                form.fields['category'].queryset = Category.objects.filter(category_type__name='Приход')
+                form.fields['category_unit'].queryset = CategoryUnit.objects.filter(category__category_type__name='Приход')
+            elif int(self.request.GET['key']) == 2:
+                form.fields['category'].queryset = Category.objects.filter(category_type__name='Расход')
+                form.fields['category_unit'].queryset = CategoryUnit.objects.filter(category__category_type__name='Расход')
+        return form
 
     def post(self, request, *args, **kwargs):
         category = Category.objects.get(pk=request.POST['category'])

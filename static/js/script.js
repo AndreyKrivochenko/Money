@@ -16,9 +16,52 @@ accountCreateModal.addEventListener('show.bs.modal', async function (){
     contentDiv.innerHTML = await response.text();
 })
 
-const operationCreateModal = document.getElementById('operationCreateModal')
-operationCreateModal.addEventListener('show.bs.modal', async function (){
-    const contentDiv = operationCreateModal.querySelector('.modal-content');
-    const response = await fetch('/account/create/operation/');
+function select(){
+    const select = document.querySelector('#id_category');
+    select.onchange = function () {
+        let indexSelected = select.selectedIndex,
+            option = select.querySelectorAll('option')[indexSelected];
+        let selectedValue = option.getAttribute('value');
+        let newUnits = [];
+        for (let i = 0; i < category.length; i++){
+            if (category[i].fields.category == selectedValue){
+                let obj = {
+                    'id': category[i].pk,
+                    'name': category[i].fields.name
+                };
+                newUnits.push(obj);
+            }
+        }
+        let newHtml = '<option value="" selected="">Выберите расход/доход</option>';
+        for(let i = 0; i < newUnits.length; i++){
+            newHtml += `<option value="${newUnits[i].id}">${newUnits[i].name}</option>`
+        }
+        document.getElementById('id_category_unit').innerHTML = newHtml;
+    }
+}
+
+const operationCreateModalPrihod = document.getElementById('operationCreateModalPrihod')
+operationCreateModalPrihod.addEventListener('show.bs.modal', async function (){
+    const contentDiv = operationCreateModalPrihod.querySelector('.modal-content');
+    const response = await fetch('/account/create/operation/?key=1');
     contentDiv.innerHTML = await response.text();
+
+    select()
+})
+
+const operationCreateModalRashod = document.getElementById('operationCreateModalRashod')
+operationCreateModalRashod.addEventListener('show.bs.modal', async function (){
+    const contentDiv = operationCreateModalRashod.querySelector('.modal-content');
+    const response = await fetch('/account/create/operation/?key=2');
+    contentDiv.innerHTML = await response.text();
+
+    select()
+})
+
+operationCreateModalRashod.addEventListener('hidden.bs.modal', function (){
+    document.getElementById('operation-create-form').innerHTML = ''
+})
+
+operationCreateModalPrihod.addEventListener('hidden.bs.modal', function (){
+    document.getElementById('operation-create-form').innerHTML = ''
 })

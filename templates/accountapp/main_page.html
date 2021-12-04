@@ -10,9 +10,14 @@
     {% block account_content %}
         <div class="row h-100">
             <div class="col-2 border-end text-center">
-                <button data-bs-toggle="modal" data-bs-target="#accountCreateModal" type="button" class="btn btn-outline-info btn-sm mt-5">Создать счёт
+                <button data-bs-toggle="modal" data-bs-target="#accountCreateModal" type="button"
+                        class="btn btn-outline-info btn-sm mt-5">Создать счёт
                 </button>
-                <button data-bs-toggle="modal" data-bs-target="#operationCreateModal" type="button" class="btn btn-outline-info btn-sm mt-3">Новый доход/расход
+                <button data-bs-toggle="modal" data-bs-target="#operationCreateModalPrihod" type="button"
+                        class="btn btn-outline-info btn-sm mt-3">Новый доход
+                </button>
+                <button data-bs-toggle="modal" data-bs-target="#operationCreateModalRashod" type="button"
+                        class="btn btn-outline-info btn-sm mt-3">Новый расход
                 </button>
             </div>
             <div class="col-7 border-end">
@@ -27,12 +32,15 @@
                 </div>
             </div>
         </div>
-    {% include 'accountapp/create_account_modal.html' %}
-    {% include 'accountapp/create_operation_modal.html' %}
+        {% include 'accountapp/create_account_modal.html' %}
+        {% include 'accountapp/create_operation_modal.html' %}
     {% endblock account_content %}
 {% endblock content %}
 
 {% block js %}
     {{ block.super }}
+    <script>
+        const category = {{ category_json|safe }}
+    </script>
     <script src="{% static 'js/script.js' %}"></script>
 {% endblock js %}
