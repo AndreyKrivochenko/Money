@@ -67,8 +67,9 @@ class OperationCreateForm(forms.ModelForm):
     )
 
     data = forms.DateField(
+        input_formats=['%d-%m-%Y'],
         label='Дата',
-        widget=forms.DateInput(attrs={'class': 'form-control mb-2'}),
+        widget=forms.DateInput(attrs={'class': 'form-control mb-2', 'data-toggle': 'datepicker'}),
     )
 
     comment = forms.CharField(

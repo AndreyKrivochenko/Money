@@ -40,7 +40,7 @@
 {% block js %}
     {{ block.super }}
     <script>
-        const category = {{ category_json|safe }}
+        const category = {{ category_json|safe }};
     </script>
     <script src="{% static 'js/script.js' %}"></script>
 {% endblock js %}
