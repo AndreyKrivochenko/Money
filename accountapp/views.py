@@ -2,7 +2,7 @@ import json
 
 from django.core import serializers
 from django.urls import reverse_lazy
-from django.views.generic import DeleteView, CreateView
+from django.views.generic import DeleteView, CreateView, ListView
 
 from accountapp.forms import AccountCreateForm, OperationCreateForm
 from accountapp.models import AccountType, Account, AccountOperation
@@ -44,10 +44,12 @@ class OperationCreateView(CreateView):
         if 'key' in self.request.GET:
             if int(self.request.GET['key']) == 1:
                 form.fields['category'].queryset = Category.objects.filter(category_type__name='Приход')
-                form.fields['category_unit'].queryset = CategoryUnit.objects.filter(category__category_type__name='Приход')
+                form.fields['category_unit'].queryset = CategoryUnit.objects.filter(
+                    category__category_type__name='Приход')
             elif int(self.request.GET['key']) == 2:
                 form.fields['category'].queryset = Category.objects.filter(category_type__name='Расход')
-                form.fields['category_unit'].queryset = CategoryUnit.objects.filter(category__category_type__name='Расход')
+                form.fields['category_unit'].queryset = CategoryUnit.objects.filter(
+                    category__category_type__name='Расход')
         return form
 
     def post(self, request, *args, **kwargs):
@@ -59,6 +61,17 @@ class OperationCreateView(CreateView):
             account.add_operation(int(request.POST['price']))
         account.save()
         return super(OperationCreateView, self).post(request, *args, **kwargs)
+
+
+class OperationsListView(TemplateViewWithMenu):
+    template_name = 'accountapp/operations_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(OperationsListView, self).get_context_data(**kwargs)
+        context.update({
+            'operations_list': AccountOperation.objects.filter(account__pk=int(kwargs['pk']))
+        })
+        return context
 
 
 class AccountServicesTemplateView(TemplateViewWithMenu):

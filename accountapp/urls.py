@@ -10,4 +10,5 @@ urlpatterns = [
     path('create/', accountapp.AccountCreateView.as_view(), name='create_account'),
     path('create/operation/', accountapp.OperationCreateView.as_view(), name='create_operation'),
     path('delete/<int:pk>/', accountapp.AccountDeleteView.as_view(), name='delete_account'),
+    path('operations_list/<int:pk>', accountapp.OperationsListView.as_view(), name='operations_list'),
 ]
