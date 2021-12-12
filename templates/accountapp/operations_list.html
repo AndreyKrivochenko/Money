@@ -4,12 +4,11 @@
 {% block account_content %}
     <div class="row h-100">
         <div class="col-2 border-end text-center">
-
         </div>
         <div class="col-7 border-end">
-            <h1>Здесь будет список операций по счёту</h1>
-            <table class="table table-sm">
-                <thead>
+            <div style="height: 300px; overflow-y: scroll;">
+                <table class="table table-sm">
+                    <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Дата</th>
@@ -17,19 +16,22 @@
                         <th scope="col">Расход</th>
                         <th scope="col">Доход</th>
                     </tr>
-                </thead>
-                <tbody>
-                {% for operation in operations_list %}
-                    <tr>
-                        <th scope="row">{{ operation.pk }}</th>
-                        <td>{{ operation.data }}</td>
-                        <td>{{ operation.category.category_type.name }}: {{ operation.category_unit }}</td>
-                        <td>{% if operation.category.category_type.name == 'Расход' %}{{ operation.price }}{% endif %}</td>
-                        <td>{% if operation.category.category_type.name == 'Приход' %}{{ operation.price }}{% endif %}</td>
-                    </tr>
-                </tbody>
-                {% endfor %}
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for operation in operations_list %}
+                        <tr>
+                            <th scope="row">{{ operation.pk }}</th>
+                            <td>{{ operation.data }}</td>
+                            <td>{{ operation.category.category_type.name }}: {{ operation.category_unit }}</td>
+                            <td>{% if operation.category.category_type.name == 'Расход' %}
+                                {{ operation.price }}{% endif %}</td>
+                            <td>{% if operation.category.category_type.name == 'Приход' %}
+                                {{ operation.price }}{% endif %}</td>
+                        </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
         <div class="col-3"></div>
     </div>

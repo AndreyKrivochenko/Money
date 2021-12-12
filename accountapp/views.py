@@ -69,7 +69,7 @@ class OperationsListView(TemplateViewWithMenu):
     def get_context_data(self, **kwargs):
         context = super(OperationsListView, self).get_context_data(**kwargs)
         context.update({
-            'operations_list': AccountOperation.objects.filter(account__pk=int(kwargs['pk']))
+            'operations_list': AccountOperation.objects.filter(account__pk=int(kwargs['pk'])).order_by('data')[:10]
         })
         return context
 
