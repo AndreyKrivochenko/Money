@@ -1,8 +1,10 @@
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
+from rest_framework.viewsets import ModelViewSet
 
 from catalogapp.forms import CatalogCategoryCreateForm, CatalogUnitCategoryCreateForm, CounterpartiesCreateForm
 from catalogapp.models import Category, CategoryType, CategoryUnit, Counterparties
+from catalogapp.serializers import CounterpartiesSerializer
 from common.constants import TemplateViewWithMenu
 
 
@@ -70,3 +72,10 @@ class CounterpartiesCreateView(CreateView):
 class CounterpartiesDeleteView(DeleteView):
     model = Counterparties
     success_url = reverse_lazy('catalogapp:counterparties')
+
+
+# =============================================== API ==========================================
+
+class CounterpartiesViewSet(ModelViewSet):
+    serializer_class = CounterpartiesSerializer
+    queryset = Counterparties.objects.all()

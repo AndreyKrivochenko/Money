@@ -33,6 +33,7 @@ class CategoryUnit(models.Model):
         return self.name
 
 
+# Контрагенты - например "Мария-Ра"
 class Counterparties(models.Model):
     name = models.CharField(max_length=128, verbose_name='Наименование')
     description = models.CharField(max_length=128, verbose_name='Краткое описание', blank=True)

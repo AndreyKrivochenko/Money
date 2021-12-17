@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'catalogapp',
 
     'fontawesome_free',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

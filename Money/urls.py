@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from catalogapp.views import CounterpartiesViewSet
+
+router = DefaultRouter()
+router.register('counterparties', CounterpartiesViewSet)
+
 
 urlpatterns = [
     path('', include('mainapp.urls', namespace='mainapp')),
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
     path('account/', include('accountapp.urls', namespace='accountapp')),
     path('catalog/', include('catalogapp.urls', namespace='catalogapp')),
 ]
